@@ -4,6 +4,10 @@
 
 class Dealer : Person
 {
+public:
+    void ShuffleCards();
+    void PayPlayer();
+    Card dealCard();
 };
 
 #endif
