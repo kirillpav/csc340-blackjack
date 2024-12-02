@@ -20,8 +20,6 @@ public:
     void drawCard();
 
     void makeMove(std::string move);
-    void stand();
-    bool bust();
 };
 
 #endif

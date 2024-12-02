@@ -17,6 +17,9 @@ public:
     void placeBet(int bet);
     int payDealer(int amount);
     void updateMoney(int money);
+
+    void hit();
+    void stand();
 };
 
 #endif

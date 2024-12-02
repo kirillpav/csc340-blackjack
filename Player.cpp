@@ -26,3 +26,11 @@ void Player::updateMoney(int money)
 {
     // playerMoney = money;
 }
+
+void Player::hit()
+{
+}
+
+void Player::stand()
+{
+}
