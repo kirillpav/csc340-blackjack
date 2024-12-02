@@ -8,6 +8,18 @@ class Player : Person
 {
 private:
     std::string name;
+
+public:
+    // constructors
+    Player();
+    Player(std::string name);
+
+    void placeBet(int bet);
+    int payDealer(int amount);
+    void updateMoney(int money);
+
+    void hit();
+    void stand();
 };
 
 #endif
