@@ -11,11 +11,18 @@ Movie::Movie() : Media()
     double filmLength = 0;
 }
 
-Movie::Movie(string director, string genre, double filmLength) : Media()
+Movie::Movie(const string &title, const std::string &director, const string &genre, double length, int yearReleased) : Media(title, "available", yearReleased)
 {
+    string title = title;
     string director = director;
     string genre = genre;
-    double filmLength = filmLength;
+    double filmLength = length;
+    int yearReleased = yearReleased;
+}
+
+string Movie::getTitle() const
+{
+    return getName();
 }
 
 string Movie::getDirector() const
@@ -33,12 +40,17 @@ double Movie::getFilmLength() const
     return this->filmLength;
 }
 
-void Movie::setDirector(string director)
+void Movie::setTitle(string &title)
+{
+    setName(title);
+}
+
+void Movie::setDirector(string &director)
 {
     this->director = director;
 }
 
-void Movie::setGenre(string genre)
+void Movie::setGenre(string &genre)
 {
     this->genre = genre;
 }

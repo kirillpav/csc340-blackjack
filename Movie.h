@@ -13,15 +13,17 @@ private:
 
 public:
     Movie();
-    Movie(std::string director, std::string genre, double filmLength);
+    Movie(const std::string &title, const std::string &director, const std::string &genre, double length, int yearReleased);
 
     // Getters
+    std::string getTitle() const;
     std::string getDirector() const;
     std::string getGenre() const;
     double getFilmLength() const;
     // Setters
-    void setDirector(std::string director);
-    void setGenre(std::string genre);
+    void setTitle(std::string &title);
+    void setDirector(std::string &director);
+    void setGenre(std::string &genre);
     void setLength(double length);
 };
 
