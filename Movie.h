@@ -4,7 +4,7 @@
 #include "Media.h"
 #include <string>
 
-class Movie : Media
+class Movie : public Media
 {
 private:
     std::string director;

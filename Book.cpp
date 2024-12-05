@@ -1,5 +1,6 @@
 #include "Book.h"
 #include "Media.h"
+#include "Media.cpp"
 #include <string>
 
 using namespace std;
@@ -12,12 +13,8 @@ Book::Book() : Media()
     int pageNum = 0;
 }
 
-Book::Book(string author, string genre, int pageNum) : Media("title", "available")
-{
-    string author = author;
-    string genre = genre;
-    int pageNum = pageNum;
-}
+Book::Book(const std::string &title, const std::string &author, const std::string &genre, int pageNum, int yearReleased)
+    : Media(title, "available", yearReleased), author(author), genre(genre), pageNum(pageNum) {}
 
 string Book::getTitle() const
 {
@@ -39,7 +36,22 @@ int Book::getPageNum() const
     return this->pageNum;
 }
 
-void Book::setTitle(string title)
+void Book::setTitle(string &title)
 {
-    this->title = title;
+    setName(title);
 }
+
+void Book::setAuthor(string &author)
+{
+    this->author = author;
+}
+
+void Book::setGenre(string &genre)
+{
+    this->genre = genre;
+}
+
+// void setNumOfPages(int numOfPages)
+// {
+//     this->pageNum = numOfPages;
+// }
