@@ -4,7 +4,7 @@
 #include "Media.h"
 #include <string>
 
-class Book : Media
+class Book : public Media
 {
 private:
     std::string author;
@@ -20,9 +20,10 @@ public:
     std::string getGenre() const;
     int getPageNum() const;
 
-    void add(Book book);
-    Book search(Book bookName);
-    void remove(Book bookName);
+    void setTitle(std::string title);
+    void setAuthor(std::string author);
+    void setGenre(std::string genre);
+    void setNumOfPages(int numOfPages);
 };
 
 #endif

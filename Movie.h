@@ -15,13 +15,14 @@ public:
     Movie();
     Movie(std::string director, std::string genre, double filmLength);
 
+    // Getters
     std::string getDirector() const;
     std::string getGenre() const;
     double getFilmLength() const;
-
-    void add(Movie movie);
-    Movie search(Movie movieName);
-    void remove(Movie movieName);
+    // Setters
+    void setDirector(std::string director);
+    void setGenre(std::string genre);
+    void setLength(double length);
 };
 
 #endif

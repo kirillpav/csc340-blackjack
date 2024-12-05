@@ -38,3 +38,8 @@ int Book::getPageNum() const
 {
     return this->pageNum;
 }
+
+void Book::setTitle(string title)
+{
+    this->title = title;
+}
