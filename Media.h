@@ -7,19 +7,22 @@ class Media
 {
 private:
     std::string name;
+    std::string status;
     int yearReleased;
-    int yearAdded;
-    int rating;
+
     // Methods, therefore public
 public:
+    // Constructors
     Media();
-    // Constructor
-    Media(std::string name, int yearReleased, int yearAdded);
+    Media(std::string name, std::string status, int yearReleased);
 
     std::string getName() const;
+    std::string getStatus() const;
     int getYearReleased() const;
-    int getYearAdded() const;
-    int getRating() const;
+
+    void setName(std::string &name);
+    void setStatus(std::string &status);
+    void setReleaseYear(int &releaseYear);
 };
 
 #endif
