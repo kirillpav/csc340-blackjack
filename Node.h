@@ -18,7 +18,7 @@ public:
     Media *getData() const;
     Node *getNext() const;
     Node *getPrev() const;
-    void setMedia(Media *media);
+    void setData(Media *media);
     void setNext(Node *newNext);
     void setPrev(Node *newPrev);
 };

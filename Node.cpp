@@ -2,21 +2,21 @@
 
 Node::Node()
 {
-    word = "";
+    data = nullptr;
     next = nullptr;
     prev = nullptr;
 }
 
-Node::Node(const std::string &newWord)
+Node::Node(Media *media)
 {
-    word = newWord;
+    data = media;
     next = nullptr;
     prev = nullptr;
 }
 
-std::string Node::getWord() const
+Media *Node::getData() const
 {
-    return word;
+    return data;
 }
 
 Node *Node::getNext() const
@@ -29,9 +29,9 @@ Node *Node::getPrev() const
     return prev;
 }
 
-void Node::setWord(const std::string &newWord)
+void Node::setData(Media *newData)
 {
-    word = newWord;
+    this->data = newData;
 }
 
 void Node::setNext(Node *newNext)
@@ -47,7 +47,7 @@ void Node::setPrev(Node *newPrev)
 // Operator overloads for Node vs Node
 bool operator==(const Node &left, const Node &right)
 {
-    return left.getWord() == right.getWord();
+    return left.getData() == right.getData();
 }
 
 bool operator!=(const Node &left, const Node &right)
@@ -57,7 +57,7 @@ bool operator!=(const Node &left, const Node &right)
 
 bool operator<(const Node &left, const Node &right)
 {
-    return left.getWord() < right.getWord();
+    return left.getData() < right.getData();
 }
 
 bool operator>(const Node &left, const Node &right)
@@ -78,12 +78,12 @@ bool operator>=(const Node &left, const Node &right)
 // Operator overloads for Node vs string
 bool operator==(const Node &left, const std::string &right)
 {
-    return left.getWord() == right;
+    return left.getData() == right;
 }
 
 bool operator==(const std::string &left, const Node &right)
 {
-    return right.getWord() == left;
+    return right.getData() == left;
 }
 
 bool operator!=(const Node &left, const std::string &right)
@@ -98,40 +98,40 @@ bool operator!=(const std::string &left, const Node &right)
 
 bool operator<(const Node &left, const std::string &right)
 {
-    return left.getWord() < right;
+    return left.getData() < right;
 }
 
 bool operator<(const std::string &left, const Node &right)
 {
-    return left < right.getWord();
+    return left < right.getData();
 }
 
 bool operator>(const Node &left, const std::string &right)
 {
-    return right < left.getWord();
+    return right < left.getData();
 }
 
 bool operator>(const std::string &left, const Node &right)
 {
-    return right.getWord() < left;
+    return right.getData() < left;
 }
 
 bool operator<=(const Node &left, const std::string &right)
 {
-    return !(right < left.getWord());
+    return !(right < left.getData());
 }
 
 bool operator<=(const std::string &left, const Node &right)
 {
-    return !(right.getWord() < left);
+    return !(right.getData() < left);
 }
 
 bool operator>=(const Node &left, const std::string &right)
 {
-    return !(left.getWord() < right);
+    return !(left.getData() < right);
 }
 
 bool operator>=(const std::string &left, const Node &right)
 {
-    return !(left < right.getWord());
+    return !(left < right.getData());
 }
