@@ -9,21 +9,20 @@ private:
     std::string name;
     std::string status;
     int yearReleased;
-    int yearAdded;
-    int rating;
 
     // Methods, therefore public
 public:
     // Constructors
     Media();
-    Media(std::string name);
-    Media(std::string name, std::string status);
+    Media(std::string name, std::string status, int yearReleased);
 
     std::string getName() const;
     std::string getStatus() const;
     int getYearReleased() const;
-    int getYearAdded() const;
-    int getRating() const;
+
+    void setName(std::string &name);
+    void setStatus(std::string &status);
+    void setReleaseYear(int &releaseYear);
 };
 
 #endif
