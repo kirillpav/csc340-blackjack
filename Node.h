@@ -1,23 +1,24 @@
 #ifndef NODE_H
 #define NODE_H
 
+#include "Media.h"
 #include <string>
 
 struct Node
 {
 private:
-    std::string word;
+    Media *data;
     Node *next;
     Node *prev;
 
 public:
     Node();
-    Node(const std::string &newWord);
+    Node(Media *media);
 
-    std::string getWord() const;
+    Media *getData() const;
     Node *getNext() const;
     Node *getPrev() const;
-    void setWord(const std::string &newWord);
+    void setMedia(Media *media);
     void setNext(Node *newNext);
     void setPrev(Node *newPrev);
 };
@@ -29,6 +30,7 @@ bool operator>(const Node &left, const Node &right);
 bool operator<=(const Node &left, const Node &right);
 bool operator>=(const Node &left, const Node &right);
 
+// This defo needs changing
 bool operator==(const Node &left, const std::string &right);
 bool operator==(const std::string &left, const Node &right);
 bool operator!=(const Node &left, const std::string &right);

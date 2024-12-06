@@ -1,4 +1,5 @@
 #include "LinkedList.h"
+#include "Media.h"
 #include <iostream>
 #include <fstream>
 
@@ -9,12 +10,12 @@ LinkedList::LinkedList()
     listSize = 0;
 }
 
-LinkedList::LinkedList(const std::string &word)
+LinkedList::LinkedList(Media *media)
 {
     head = nullptr;
     tail = nullptr;
     listSize = 0;
-    push_back(word);
+    push_back(media);
 }
 
 LinkedList::~LinkedList()
@@ -53,9 +54,9 @@ void LinkedList::setSize(int newSize)
     listSize = newSize;
 }
 
-void LinkedList::push_back(const std::string &newWord)
+void LinkedList::push_back(Media *media)
 {
-    Node *newNode = new Node(newWord);
+    Node *newNode = new Node(media);
     if (head == nullptr)
     {
         head = newNode;
@@ -88,9 +89,9 @@ void LinkedList::push_back(Node *newWordNode)
 }
 
 // Insert Before Method
-Node *LinkedList::insert_before(const std::string &newWord, Node *knownNode)
+Node *LinkedList::insert_before(Media *media, Node *knownNode)
 {
-    Node *newNode = new Node(newWord);
+    Node *newNode = new Node(media);
 
     if (head == nullptr)
     {
@@ -128,79 +129,58 @@ int LinkedList::size() const
     return listSize;
 }
 
-void LinkedList::printToScreen() const
-{
-    Node *current = head;
-    while (current != nullptr)
-    {
-        if (current->getWord().empty())
-        {
-            break;
-        }
-        std::cout << current->getWord() << std::endl;
-        current = current->getNext();
-    }
-}
+// void LinkedList::printToScreen() const
+// {
+//     Node *current = head;
+//     while (current != nullptr)
+//     {
+//         if (current->getWord().empty())
+//         {
+//             break;
+//         }
+//         std::cout << current->getWord() << std::endl;
+//         current = current->getNext();
+//     }
+// }
 
-void LinkedList::printToScreenReverse() const
-{
-    Node *current = head;
+// bool LinkedList::readFromFile(const std::string &fileName)
+// {
+//     std::ifstream file(fileName);
+//     if (!file.is_open())
+//     {
+//         return false;
+//     }
 
-    while (current->getNext() != nullptr)
-    {
-        current = current->getNext();
-    }
+//     std::string word;
+//     while (file >> word)
+//     {
+//         push_back(word);
+//     }
 
-    // current is now last node
-    while (current != nullptr)
-    {
-        if (current->getWord().empty())
-        {
-            break;
-        }
-        std::cout << current->getWord() << std::endl;
-        current = current->getPrev();
-    }
-}
+//     file.close();
+//     return true;
+// }
 
-bool LinkedList::readFromFile(const std::string &fileName)
-{
-    std::ifstream file(fileName);
-    if (!file.is_open())
-    {
-        return false;
-    }
+// bool LinkedList::writeToFile(const std::string &fileName) const
+// {
+//     std::ofstream file(fileName);
+//     if (!file.is_open())
+//     {
+//         return false;
+//     }
 
-    std::string word;
-    while (file >> word)
-    {
-        push_back(word);
-    }
+//     Node *current = head;
+//     while (current != nullptr)
+//     {
+//         file << current->getWord() << std::endl;
+//         current = current->getNext();
+//     }
 
-    file.close();
-    return true;
-}
+//     file.close();
+//     return true;
+// }
 
-bool LinkedList::writeToFile(const std::string &fileName) const
-{
-    std::ofstream file(fileName);
-    if (!file.is_open())
-    {
-        return false;
-    }
-
-    Node *current = head;
-    while (current != nullptr)
-    {
-        file << current->getWord() << std::endl;
-        current = current->getNext();
-    }
-
-    file.close();
-    return true;
-}
-
-Node *LinkedList::deleteWord(Node *nodeToDelete)
+Node *LinkedList::deleteMedia(Node *nodeToDelete)
 {
     if (nodeToDelete == nullptr)
     {
