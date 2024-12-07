@@ -1,10 +1,11 @@
 #include "Member.h"
 #include <iostream>
 #include <algorithm>
+#include <vector>
+
 
 Member::Member() : memberId(0) {}
 
-Member::Member(const std::string& userName, int memberId) : userName(userName), memberId(memberId) {}
 
 std::string Member::getUserName() const {
     return userName;
@@ -25,7 +26,7 @@ void Member::setMemberId(int newMemberId) {
 void Member::addMedia(const Media& mediaItem) {
     borrowedMedia.push_back(mediaItem);
 }
-
+/* Needs Fixing, also can't use auto, change to match variables from media
 void Member::returnMedia(const std::string& mediaItemName) {
     auto it = std::remove_if(borrowedMedia.begin(), borrowedMedia.end(),
                              [&mediaItemName](const Media& item) {
@@ -38,12 +39,14 @@ void Member::returnMedia(const std::string& mediaItemName) {
         std::cout << "Item '" << mediaItemName << "' not found for " << userName << ".\n";
     }
 }
-
+*/
+/*
 void Member::printMedia() const {
     std::cout << "Items borrowed by " << userName << ":\n";
-    for (const auto& item : borrowedMedia) {
+    for (const auto& item : borrowedMedia) {                    // gotta change to match names from media
         std::cout << "Media Name: " << item.mediaName << "\n";
         std::cout << "Date Borrowed: " << item.dateBorrowed << "\n";
         std::cout << "Due Date: " << item.dueDate << "\n\n";
     }
 }
+*/
