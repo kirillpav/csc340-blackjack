@@ -24,23 +24,26 @@ public:
 };
 
 bool operator==(const Node &left, const Node &right);
-bool operator!=(const Node &left, const Node &right);
-bool operator<(const Node &left, const Node &right);
-bool operator>(const Node &left, const Node &right);
-bool operator<=(const Node &left, const Node &right);
-bool operator>=(const Node &left, const Node &right);
-
-// This defo needs changing
 bool operator==(const Node &left, const std::string &right);
 bool operator==(const std::string &left, const Node &right);
+
+bool operator!=(const Node &left, const Node &right);
 bool operator!=(const Node &left, const std::string &right);
 bool operator!=(const std::string &left, const Node &right);
+
+bool operator<(const Node &left, const Node &right);
 bool operator<(const Node &left, const std::string &right);
 bool operator<(const std::string &left, const Node &right);
+
+bool operator>(const Node &left, const Node &right);
 bool operator>(const Node &left, const std::string &right);
 bool operator>(const std::string &left, const Node &right);
+
+bool operator<=(const Node &left, const Node &right);
 bool operator<=(const Node &left, const std::string &right);
 bool operator<=(const std::string &left, const Node &right);
+
+bool operator>=(const Node &left, const Node &right);
 bool operator>=(const Node &left, const std::string &right);
 bool operator>=(const std::string &left, const Node &right);
 

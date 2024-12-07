@@ -5,16 +5,17 @@
 
 class Media
 {
-private:
+
+//H-Was private and not protected for some godless reason
+protected:
     std::string name;
     std::string status;
     int yearReleased;
 
-    // Methods, therefore public
+
 public:
-    // Constructors
     Media();
-    Media(std::string name, std::string status, int yearReleased);
+    Media(const std::string &name, const std::string &status, int yearReleased);
 
     std::string getName() const;
     std::string getStatus() const;
@@ -23,6 +24,9 @@ public:
     void setName(std::string &name);
     void setStatus(std::string &status);
     void setReleaseYear(int &releaseYear);
+
+    //H-Making media an abstarct class. Review pure virtual functions in Reading 20.7 if needed
+    virtual void print() const = 0;
 };
 
 #endif

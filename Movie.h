@@ -13,18 +13,22 @@ private:
 
 public:
     Movie();
-    Movie(const std::string &title, const std::string &director, const std::string &genre, double length, int yearReleased);
+    Movie(const std::string &name, const std::string &status, int yearReleased, const std::string &director, const std::string &genre, double length);
+    //H- Only strings need to be passed by reference with const
+
+    //H-For some reason we have getters/setters for a "title" variable 
+    //H-Remember that Movie inherits the "name" attribute i.e. the Movie's title
 
     // Getters
-    std::string getTitle() const;
     std::string getDirector() const;
     std::string getGenre() const;
     double getFilmLength() const;
     // Setters
-    void setTitle(std::string &title);
     void setDirector(std::string &director);
     void setGenre(std::string &genre);
-    void setLength(double length);
+    void setLength(double &length);
+
+    void print() const;
 };
 
 #endif

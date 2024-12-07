@@ -2,31 +2,31 @@
 
 Node::Node()
 {
-    data = nullptr;
-    next = nullptr;
-    prev = nullptr;
+    this->data = nullptr;
+    this->next = nullptr;
+    this->prev = nullptr;
 }
 
 Node::Node(Media *media)
 {
-    data = media;
-    next = nullptr;
-    prev = nullptr;
+    this->data = media;
+    this->next = nullptr;
+    this->prev = nullptr;
 }
 
 Media *Node::getData() const
 {
-    return data;
+    return this->data;
 }
 
 Node *Node::getNext() const
 {
-    return next;
+    return this->next;
 }
 
 Node *Node::getPrev() const
 {
-    return prev;
+    return this->prev;
 }
 
 void Node::setData(Media *newData)
@@ -36,101 +36,93 @@ void Node::setData(Media *newData)
 
 void Node::setNext(Node *newNext)
 {
-    next = newNext;
+    this->next = newNext;
 }
 
 void Node::setPrev(Node *newPrev)
 {
-    prev = newPrev;
+    this->prev = newPrev;
 }
 
-// Operator overloads for Node vs Node
+// Operator overloads for ==: Node v. Node, Node v. String, String v. Node
 bool operator==(const Node &left, const Node &right)
 {
     return left.getData() == right.getData();
 }
-
-bool operator!=(const Node &left, const Node &right)
-{
-    return !(left == right);
-}
-
-bool operator<(const Node &left, const Node &right)
-{
-    return left.getData() < right.getData();
-}
-
-bool operator>(const Node &left, const Node &right)
-{
-    return right < left;
-}
-
-bool operator<=(const Node &left, const Node &right)
-{
-    return !(right < left);
-}
-
-bool operator>=(const Node &left, const Node &right)
-{
-    return !(left < right);
-}
-
-// Operator overloads for Node vs string
 bool operator==(const Node &left, const std::string &right)
 {
     return left.getData() == right;
 }
-
 bool operator==(const std::string &left, const Node &right)
 {
     return right.getData() == left;
 }
 
+// Operator overloads for !=: Node v. Node, Node v. String, String v. Node
+bool operator!=(const Node &left, const Node &right)
+{
+    return !(left == right);
+}
 bool operator!=(const Node &left, const std::string &right)
 {
     return !(left == right);
 }
-
 bool operator!=(const std::string &left, const Node &right)
 {
     return !(right == left);
 }
 
+// Operator overloads for <: Node v. Node, Node v. String, String v. Node
+bool operator<(const Node &left, const Node &right)
+{
+    return left.getData() < right.getData();
+}
 bool operator<(const Node &left, const std::string &right)
 {
     return left.getData() < right;
 }
-
 bool operator<(const std::string &left, const Node &right)
 {
     return left < right.getData();
 }
 
+// Operator overloads for >: Node v. Node, Node v. String, String v. Node
+bool operator>(const Node &left, const Node &right)
+{
+    return right < left;
+}
 bool operator>(const Node &left, const std::string &right)
 {
     return right < left.getData();
 }
-
 bool operator>(const std::string &left, const Node &right)
 {
     return right.getData() < left;
 }
 
+// Operator overloads for <=: Node v. Node, Node v. String, String v. Node
+bool operator<=(const Node &left, const Node &right)
+{
+    return !(right < left);
+}
 bool operator<=(const Node &left, const std::string &right)
 {
     return !(right < left.getData());
 }
-
 bool operator<=(const std::string &left, const Node &right)
 {
     return !(right.getData() < left);
 }
 
+// Operator overloads for >=: Node v. Node, Node v. String, String v. Node
+bool operator>=(const Node &left, const Node &right)
+{
+    return !(left < right);
+}
 bool operator>=(const Node &left, const std::string &right)
 {
     return !(left.getData() < right);
 }
-
 bool operator>=(const std::string &left, const Node &right)
 {
     return !(left < right.getData());

@@ -1,52 +1,83 @@
 #include "Member.h"
 #include <iostream>
-#include <algorithm>
+#include <algorithm>  //  <-----  H- who invited this guy??
 #include <vector>
 
+using namespace std;
 
-Member::Member() : memberId(0) {}
-
-
-std::string Member::getUserName() const {
-    return userName;
+Member::Member()
+{
+    memberId = 0;
+    username = "";
+}
+Member::Member(int memberId, string userName)
+{
+    memberId = memberId;
+    username = userName;
 }
 
-void Member::setUserName(const std::string& newName) {
-    userName = newName;
+
+int Member::getMemberId() const 
+{
+    return this->memberId;
+}
+string Member::getUsername() const 
+{
+    return this->username;
 }
 
-int Member::getMemberId() const {
-    return memberId;
+
+void Member::setUsername(string &newName) 
+{
+    this->username = newName;
+}
+void Member::setMemberId(int &newMemberId) 
+{
+    this->memberId = newMemberId;
 }
 
-void Member::setMemberId(int newMemberId) {
-    memberId = newMemberId;
+
+void Member::addMedia(const Media& mediaItem) 
+{
+    this->borrowedMedia.push_back(mediaItem);
 }
 
-void Member::addMedia(const Media& mediaItem) {
-    borrowedMedia.push_back(mediaItem);
-}
-/* Needs Fixing, also can't use auto, change to match variables from media
-void Member::returnMedia(const std::string& mediaItemName) {
-    auto it = std::remove_if(borrowedMedia.begin(), borrowedMedia.end(),
-                             [&mediaItemName](const Media& item) {
-                                 return item.mediaName == mediaItemName;
-                             });
-    if (it != borrowedMedia.end()) {
-        borrowedMedia.erase(it, borrowedMedia.end());
-        std::cout << "Item '" << mediaItemName << "' returned by " << userName << ".\n";
-    } else {
-        std::cout << "Item '" << mediaItemName << "' not found for " << userName << ".\n";
+//H-Maybe we need a function to use an interator through borrowedMedia to avoid redundant code
+
+//H-Review vectors
+void Member::returnMedia( const string& mediaItemName) 
+{
+    vector<Media>:: iterator bookmark = borrowedMedia.begin();
+    while (bookmark != borrowedMedia.end()) {
+        //H-No need to dereference with * operator as bookmark already points to the media we want to print
+        if (bookmark->getName() == mediaItemName)
+        {
+            break;
+        }
+        bookmark++;
+    }
+
+    if(bookmark == borrowedMedia.end())
+    {
+        cout << "Member has not borrowed an item named: " << mediaItemName << ".\n";
+    }
+    else
+    {
+        borrowedMedia.erase(bookmark);
+        cout << "The item " << mediaItemName << " has been returned.\n";
     }
 }
-*/
-/*
-void Member::printMedia() const {
-    std::cout << "Items borrowed by " << userName << ":\n";
-    for (const auto& item : borrowedMedia) {                    // gotta change to match names from media
-        std::cout << "Media Name: " << item.mediaName << "\n";
-        std::cout << "Date Borrowed: " << item.dateBorrowed << "\n";
-        std::cout << "Due Date: " << item.dueDate << "\n\n";
+
+//H- Review vectors
+void Member::printMedia() const 
+{
+    cout << "Items borrowed by " << username << ":\n";
+
+    vector<Media>:: const_iterator bookmark = borrowedMedia.begin();
+    while (bookmark != borrowedMedia.end()) {
+        //H-No need to dereference with * operator as bookmark already points to the media we want to print
+        bookmark->print();
+        bookmark++;
+        cout << endl;
     }
 }
-*/
