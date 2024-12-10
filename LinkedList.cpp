@@ -72,21 +72,21 @@ void LinkedList::push_back(Media *media)
 }
 
 // Overloading push_back
-// void LinkedList::push_back(Node *newWordNode)
-// {
-//     if (head == nullptr)
-//     {
-//         head = newWordNode;
-//         tail = newWordNode;
-//     }
-//     else
-//     {
-//         tail->setNext(newWordNode);
-//         newWordNode->setPrev(tail);
-//         tail = newWordNode;
-//     }
-//     listSize++;
-// }
+void LinkedList::push_back(Node *newWordNode)
+{
+    if (head == nullptr)
+    {
+        head = newWordNode;
+        tail = newWordNode;
+    }
+    else
+    {
+        tail->setNext(newWordNode);
+        newWordNode->setPrev(tail);
+        tail = newWordNode;
+    }
+    listSize++;
+}
 
 // Insert Before Method
 Node *LinkedList::insert_before(Media *media, Node *knownNode)
