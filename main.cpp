@@ -6,25 +6,105 @@
 #include <iostream>
 using namespace std;
 
-// H-What in chernobyl happened here
 void displayMenu()
 {
     cout << "=========================================\n";
     cout << "           📚 Library Menu               \n";
     cout << "=========================================\n";
     cout << "1. Add a New Book\n";
-    cout << "2. Search for a Book\n";
-    cout << "3. Borrow a Book\n";
-    cout << "4. Return a Book\n";
-    cout << "5. List All Books\n";
-    cout << "6. Exit\n";
+    cout << "2. Add a New Movie\n";
+    cout << "3. Search for a Book\n";
+    cout << "4. Search for a Movie\n";
+    cout << "5. Borrow a Media Item\n";
+    cout << "6. Return a Media Item\n";
+    cout << "7. List All Media\n";
+    cout << "8. Exit\n";
     cout << "=========================================\n";
-    cout << "Please choose an option (1-6): ";
+    cout << "Please choose an option (1-8): ";
+}
+
+void addBook(LinkedList &library)
+{
+    string name, status, author, genre;
+    int yearReleased, pageNum;
+
+    cout << "\nEnter the book's title: ";
+    cin.ignore();
+    getline(cin, name);
+    cout << "Enter the book's status (e.g., Available): ";
+    getline(cin, status);
+    cout << "Enter the author's name: ";
+    getline(cin, author);
+    cout << "Enter the genre: ";
+    getline(cin, genre);
+    cout << "Enter the year released: ";
+    cin >> yearReleased;
+    cout << "Enter the number of pages: ";
+    cin >> pageNum;
+
+    library.push_back(new Book(name, status, yearReleased, author, genre, pageNum));
+    cout << "Book \"" << name << "\" added successfully!\n";
+}
+
+void addMovie(LinkedList &library)
+{
+    string name, status, director, genre;
+    int yearReleased, duration;
+
+    cout << "\nEnter the movie's title: ";
+    cin.ignore();
+    getline(cin, name);
+    cout << "Enter the movie's status (e.g., Available): ";
+    getline(cin, status);
+    cout << "Enter the director's name: ";
+    getline(cin, director);
+    cout << "Enter the genre: ";
+    getline(cin, genre);
+    cout << "Enter the year released: ";
+    cin >> yearReleased;
+    cout << "Enter the duration (in minutes): ";
+    cin >> duration;
+
+    library.push_back(new Movie(name, status, yearReleased, director, genre, duration));
+    cout << "Movie \"" << name << "\" added successfully!\n";
+}
+
+void searchMedia(const LinkedList &library, const string &type)
+{
+    string name;
+    cout << "\nEnter the " << type << "'s title to search: ";
+    cin.ignore();
+    getline(cin, name);
+
+    Node *current = library.getHead();
+    while (current != nullptr)
+    {
+        Media *media = current->getData();
+        if (media->getName() == name)
+        {
+            cout << type << " \"" << name << "\" is available in the library.\n";
+            media->print();
+            return;
+        }
+        current = current->getNext();
+    }
+    cout << type << " \"" << name << "\" not found in the library.\n";
+}
+
+void listMedia(const LinkedList &library)
+{
+    if (library.size() == 0)
+    {
+        cout << "\nNo media items available in the library.\n";
+        return;
+    }
+    cout << "\nListing all media items in the library:\n";
+    library.printToScreen();
 }
 
 int main()
 {
-    LinkedList library; // A collection of books
+    LinkedList library; // A collection of books and movies
     int choice;
 
     do
@@ -35,30 +115,36 @@ int main()
         switch (choice)
         {
         case 1:
-            // addBook(library);
+            addBook(library);
             break;
         case 2:
-            // searchBook(library);
+            addMovie(library);
             break;
         case 3:
-            // cout << "\nBorrowing a book is under development...\n";
+            searchMedia(library, "Book");
             break;
         case 4:
-            // cout << "\nReturning a book is under development...\n";
+            searchMedia(library, "Movie");
             break;
         case 5:
-            // listBooks(library);
+            cout << "\nBorrowing a media item is under development...\n";
             break;
         case 6:
+            cout << "\nReturning a media item is under development...\n";
+            break;
+        case 7:
+            listMedia(library);
+            break;
+        case 8:
             cout << "\nThank you for using the library system! Goodbye.\n";
             break;
         default:
-            cout << "\nInvalid option! Please choose a number between 1 and 6.\n";
+            cout << "\nInvalid option! Please choose a number between 1 and 8.\n";
         }
         cout << "\nPress Enter to continue...";
         cin.ignore();
         cin.get();
-    } while (choice != 6);
+    } while (choice != 8);
 
     return 0;
 }

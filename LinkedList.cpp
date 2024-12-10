@@ -3,6 +3,8 @@
 #include <iostream>
 #include <fstream>
 
+using namespace std;
+
 LinkedList::LinkedList()
 {
     head = nullptr;
@@ -136,10 +138,9 @@ void LinkedList::printToScreen() const
     {
         if (current->getData() != nullptr)
         {
-            break;
+            cout << (current->getData()) << endl;
         }
-        std::cout << current->getData() << std::endl;
-        current = current->getNext();
+        current = current->getNext(); // Move to the next node
     }
 }
 
