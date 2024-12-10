@@ -138,7 +138,7 @@ void LinkedList::printToScreen() const
     {
         if (current->getData() != nullptr)
         {
-            cout << (current->getData()) << endl;
+            cout << (current->getData()->getName()) << endl;
         }
         current = current->getNext(); // Move to the next node
     }
