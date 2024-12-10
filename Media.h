@@ -6,12 +6,11 @@
 class Media
 {
 
-//H-Was private and not protected for some godless reason
+    // H-Was private and not protected for some godless reason
 protected:
     std::string name;
     std::string status;
     int yearReleased;
-
 
 public:
     Media();
@@ -25,7 +24,7 @@ public:
     void setStatus(std::string &status);
     void setReleaseYear(int &releaseYear);
 
-    //H-Making media an abstarct class. Review pure virtual functions in Reading 20.7 if needed
+    // H-Making media an abstarct class. Review pure virtual functions in Reading 20.7 if needed
     virtual void print() const = 0;
 };
 

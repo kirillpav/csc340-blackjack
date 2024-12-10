@@ -3,13 +3,11 @@
 
 using namespace std;
 
-Media::Media() 
+Media::Media()
     : name(""), status(""), yearReleased(0) {}
 
-
-Media::Media(const std::string &name, const std::string &status, int yearReleased) 
+Media::Media(const std::string &name, const std::string &status, int yearReleased)
     : name(name), status(status), yearReleased(yearReleased) {}
-
 
 string Media::getName() const
 {
