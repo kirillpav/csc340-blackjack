@@ -11,6 +11,7 @@ protected:
     std::string name;
     std::string status;
     int yearReleased;
+    std::string mediaType;
 
 public:
     Media();
@@ -19,10 +20,12 @@ public:
     std::string getName() const;
     std::string getStatus() const;
     int getYearReleased() const;
+    std::string getMediaType() const;
 
     void setName(std::string &name);
     void setStatus(std::string &status);
     void setReleaseYear(int &releaseYear);
+    void setMediaType(std::string &mediaType);
 
     // H-Making media an abstarct class. Review pure virtual functions in Reading 20.7 if needed
     virtual void print() const = 0;

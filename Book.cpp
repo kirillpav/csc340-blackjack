@@ -8,12 +8,14 @@ using namespace std;
 Book::Book() : Media("", "", -1),
                author(""), genre(""), pageNum(-1)
 {
+    mediaType = "Book";
 }
 
 // H- Only strings need to be passed by reference with const
 Book::Book(const string &name, const string &status, int yearReleased, const string &author, const string &genre, double pageNum) : Media(name, status, yearReleased),
                                                                                                                                     author(author), genre(genre), pageNum(pageNum)
 {
+    mediaType = "Book";
 }
 
 string Book::getAuthor() const

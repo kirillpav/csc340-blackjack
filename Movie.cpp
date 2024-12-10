@@ -8,12 +8,14 @@ using namespace std;
 Movie::Movie() : Media("", "", -1),
                  director(""), genre(""), filmLength(-1)
 {
+    mediaType = "Movie";
 }
 
 // H- Only strings need to be passed by reference with const
 Movie::Movie(const std::string &name, const std::string &status, int yearReleased, const std::string &director, const std::string &genre, double length) : Media(name, status, yearReleased),
                                                                                                                                                            director(director), genre(genre), filmLength(length)
 {
+    mediaType = "Movie";
 }
 
 string Movie::getDirector() const
