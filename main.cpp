@@ -19,7 +19,7 @@ void displayMenu()
     cout << "6. Return a Media Item\n";
     cout << "7. List All Media\n";
     cout << "8. Exit\n";
-    cout << "=========================================\n";
+    cout << "=========================================";
     cout << "Please choose an option (1-8): ";
 }
 
@@ -49,7 +49,8 @@ void addBook(LinkedList &library)
 void addMovie(LinkedList &library)
 {
     string name, status, director, genre;
-    int yearReleased, duration;
+    int yearReleased;
+    double duration;
 
     cout << "\nEnter the movie's title: ";
     cin.ignore();

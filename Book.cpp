@@ -5,16 +5,16 @@
 
 using namespace std;
 
-Book::Book():
-    Media("", "", -1), 
-    author(""), genre(""), pageNum(-1) 
-{}
+Book::Book() : Media("", "", -1),
+               author(""), genre(""), pageNum(-1)
+{
+}
 
-//H- Only strings need to be passed by reference with const
-Book::Book(const string &name, const string &status, int yearReleased, const string &author, const string &genre, double pageNum): 
-    Media(name, status, yearReleased), 
-    author(author), genre(genre), pageNum(pageNum) 
-{}
+// H- Only strings need to be passed by reference with const
+Book::Book(const string &name, const string &status, int yearReleased, const string &author, const string &genre, double pageNum) : Media(name, status, yearReleased),
+                                                                                                                                    author(author), genre(genre), pageNum(pageNum)
+{
+}
 
 string Book::getAuthor() const
 {
@@ -30,7 +30,6 @@ int Book::getPageNum() const
 {
     return this->pageNum;
 }
-
 
 void Book::setAuthor(string &author)
 {
@@ -49,6 +48,6 @@ void Book::setNumOfPages(int &numOfPages)
 
 void Book::print() const
 {
-    cout << name << " was published by " << author << "in " << yearReleased << " is a " << genre << " book with " << pageNum << " pages. \n";
-    cout << "This book is currently " << status  << ".";
+    cout << name << " was published by " << author << " in " << yearReleased << " is a " << genre << " book with " << pageNum << " pages.\n";
+    cout << "This book is currently " << status << ".";
 }

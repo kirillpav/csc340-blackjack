@@ -10,10 +10,9 @@ class Member
 private:
     int memberId;
     std::string username;
-    std::vector<Media> borrowedMedia; // push_back to add, remove or pop to return an item.
+    std::vector<Media *> borrowedMedia; // push_back to add, remove or pop to return an item.
 
 public:
-
     Member();
 
     Member(const int memberId, const std::string userName);
@@ -23,11 +22,10 @@ public:
 
     void setMemberId(int &newMemberId);
     void setUsername(std::string &newUsername);
-   
-    void addMedia(const Media &mediaItem);
-    void returnMedia( const std::string &mediaItemName);
+
+    void addMedia(Media *mediaItem);
+    void returnMedia(const std::string &mediaItemName);
     void printMedia() const;
 };
 
 #endif
-
