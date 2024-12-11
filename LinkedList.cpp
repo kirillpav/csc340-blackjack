@@ -2,7 +2,8 @@
 #include "Media.h"
 #include <iostream>
 #include <fstream>
-
+#include "Movie.h"
+#include "Book.h"
 using namespace std;
 
 LinkedList::LinkedList()
@@ -138,10 +139,28 @@ void LinkedList::printToScreen() const
     {
         if (current->getData() != nullptr)
         {
-            cout << "Type: " << (current->getData()->getMediaType()) << endl;
-            cout << "Name: " << (current->getData()->getName()) << endl;
-            cout << "Status: " << (current->getData()->getStatus()) << endl;
-            cout << "Year Released: " << (current->getData()->getYearReleased()) << endl;
+            Media *media = current->getData();
+            cout << "Type: " << media->getMediaType() << endl;
+            cout << "Name: " << media->getName() << endl;
+            cout << "Status: " << media->getStatus() << endl;
+            cout << "Year Released: " << media->getYearReleased() << endl;
+
+            // Print Book specific details
+            if (media->getMediaType() == "Book")
+            {
+                Book *book = dynamic_cast<Book *>(media);
+                cout << "Author: " << book->getAuthor() << endl;
+                cout << "Genre: " << book->getGenre() << endl;
+                cout << "Number of Pages: " << book->getPageNum() << endl;
+            }
+            // Print Movie specific details
+            else if (media->getMediaType() == "Movie")
+            {
+                Movie *movie = dynamic_cast<Movie *>(media);
+                cout << "Director: " << movie->getDirector() << endl;
+                cout << "Genre: " << movie->getGenre() << endl;
+                cout << "Duration: " << movie->getFilmLength() << " minutes" << endl;
+            }
             cout << "----------------------------------------" << endl;
         }
         current = current->getNext(); // Move to the next node
