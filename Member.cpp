@@ -34,10 +34,9 @@ void Member::setMemberId(int &newMemberId)
     this->memberId = newMemberId;
 }
 
-// void Member::addMedia(const Media &mediaItem)
-// {
-//     borrowedMedia.push_back(const_cast<Media *>(&mediaItem));
-// }
+void Member::addMedia(const Media& mediaItem) {
+    borrowedMedia.push_back(&mediaItem); // Borrow by storing a pointer
+ }
 
 // H-Maybe we need a function to use an interator through borrowedMedia to avoid redundant code
 
