@@ -40,6 +40,7 @@ public:
     void mergeDicts(LinkedList *listB);
     void mergeSort();
     void mergeSort(LinkedList *topListPtr);
+    Media* linearSearch(const std::string& title) const;
 };
 
 #endif
