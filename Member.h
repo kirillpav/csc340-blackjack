@@ -23,7 +23,7 @@ public:
     void setMemberId(int &newMemberId);
     void setUsername(std::string &newUsername);
 
-    void addMedia(Media *mediaItem);
+    void addMedia(const Media& mediaItem);
     void returnMedia(const std::string &mediaItemName);
     void printMedia() const;
 };
