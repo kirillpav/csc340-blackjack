@@ -264,6 +264,25 @@ void LinkedList::mergeDicts(LinkedList *listB)
     }
 }
 
+Media* LinkedList::linearSearch(const string& title) const
+{
+    Node *current = head;
+    
+    // Traverse the list and search for the title
+    while (current != nullptr)
+    {
+        if (current->getData() != nullptr && current->getData()->getName() == title)
+        {
+            return current->getData();  // Return the Media pointer if a match is found
+        }
+        current = current->getNext();
+    }
+
+    return nullptr;  // Return nullptr if not found
+}
+
+
+
 // Create a temp node to make insertion easier
 //     Node temp;
 //     Node *merged = &temp;
