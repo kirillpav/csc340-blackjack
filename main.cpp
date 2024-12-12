@@ -128,7 +128,23 @@ int main()
             searchMedia(library, "Movie");
             break;
         case 5:
-            cout << "\nBorrowing a media item is under development...\n";
+            { // Would need to incorporate this with the different media types....
+            
+            string title; 
+            cout << "Enter the title of the media item to borrow: ";
+            cin.ignore();
+            getline(cin, title);
+            
+            // Search for the item in the LinkedList
+            Media* mediaItem = library.linearSearch(title);
+            
+            if (mediaItem) {
+                member->addMedia(*mediaItem); // Borrow the item
+                cout << "Media item '" << title << "' borrowed successfully.\n";
+            } else {
+                cout << "Media item '" << title << "' not found.\n";
+            }
+        }
             break;
         case 6:
             cout << "\nReturning a media item is under development...\n";
