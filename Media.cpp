@@ -4,18 +4,10 @@
 using namespace std;
 
 Media::Media()
-{
-    string name = "";
-    string status = "";
-    int yearReleased = 0;
-}
+    : name(""), status(""), yearReleased(0), mediaType("") {}
 
-Media::Media(string name, string status, int yearReleased)
-{
-    string name = name;
-    string status = status;
-    int yearReleased = yearReleased;
-}
+Media::Media(const std::string &name, const std::string &status, int yearReleased)
+    : name(name), status(status), yearReleased(yearReleased), mediaType("") {}
 
 string Media::getName() const
 {
@@ -25,6 +17,11 @@ string Media::getName() const
 string Media::getStatus() const
 {
     return this->status;
+}
+
+string Media::getMediaType() const
+{
+    return this->mediaType;
 }
 
 int Media::getYearReleased() const
