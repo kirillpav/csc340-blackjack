@@ -146,8 +146,14 @@ int main()
             }
         }
             break;
-        case 6:
-            cout << "\nReturning a media item is under development...\n";
+        case 6: {
+            // Return media case
+            string mediaName;
+            cout << "Enter the name of the media item to return: ";
+            cin.ignore(); // Clear input buffer
+            getline(cin, mediaName); // Get full media name
+            member->returnMedia(mediaName);
+        }
             break;
         case 7:
             listMedia(library);
