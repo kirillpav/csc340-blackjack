@@ -1,7 +1,7 @@
 #include "LinkedList.h"
 #include "Movie.h"
 #include "Book.h"
-
+#include "Member.h"
 #include <string>
 #include <iostream>
 using namespace std;
