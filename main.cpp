@@ -17,11 +17,13 @@ void displayMenu()
     cout << "4. Search for a Movie\n";
     cout << "5. Borrow a Media Item\n";
     cout << "6. Return a Media Item\n";
-    cout << "7. List All Books\n";
-    cout << "8. List All Movies\n";
-    cout << "9. Exit\n";
+    cout << "7. Merge Dictionaries\n";
+    cout << "8. List All Books\n";
+    cout << "9. List All Movies\n";
+    cout << "10. List All Media\n";
+    cout << "11. Exit\n";
     cout << "=========================================";
-    cout << "Please choose an option (1-9): ";
+    cout << "Please choose an option (1-11): ";
 }
 
 void addBook(LinkedList &library)
@@ -137,21 +139,27 @@ int main()
             cout << "\nReturning a media item is under development...\n";
             break;
         case 7:
-            listMedia(books);
+            library.mergeDicts(&books);
             break;
         case 8:
-            listMedia(movies);
+            listMedia(books);
             break;
         case 9:
+            listMedia(movies);
+            break;
+        case 10:
+            listMedia(library);
+            break;
+        case 11:
             cout << "\nThank you for using the library system! Goodbye.\n";
             break;
         default:
-            cout << "\nInvalid option! Please choose a number between 1 and 8.\n";
+            cout << "\nInvalid option! Please choose a number between 1 and 11.\n";
         }
         cout << "\nPress Enter to continue...";
         cin.ignore();
         cin.get();
-    } while (choice != 8);
+    } while (choice != 11);
 
     return 0;
 }
