@@ -17,10 +17,11 @@ void displayMenu()
     cout << "4. Search for a Movie\n";
     cout << "5. Borrow a Media Item\n";
     cout << "6. Return a Media Item\n";
-    cout << "7. List All Media\n";
-    cout << "8. Exit\n";
+    cout << "7. List All Books\n";
+    cout << "8. List All Movies\n";
+    cout << "9. Exit\n";
     cout << "=========================================";
-    cout << "Please choose an option (1-8): ";
+    cout << "Please choose an option (1-9): ";
 }
 
 void addBook(LinkedList &library)
@@ -106,6 +107,8 @@ void listMedia(const LinkedList &library)
 int main()
 {
     LinkedList library; // A collection of books and movies
+    LinkedList books;
+    LinkedList movies;
     int choice;
 
     do
@@ -116,16 +119,16 @@ int main()
         switch (choice)
         {
         case 1:
-            addBook(library);
+            addBook(books);
             break;
         case 2:
-            addMovie(library);
+            addMovie(movies);
             break;
         case 3:
-            searchMedia(library, "Book");
+            searchMedia(books, "Book");
             break;
         case 4:
-            searchMedia(library, "Movie");
+            searchMedia(movies, "Movie");
             break;
         case 5:
             cout << "\nBorrowing a media item is under development...\n";
@@ -134,9 +137,12 @@ int main()
             cout << "\nReturning a media item is under development...\n";
             break;
         case 7:
-            listMedia(library);
+            listMedia(books);
             break;
         case 8:
+            listMedia(movies);
+            break;
+        case 9:
             cout << "\nThank you for using the library system! Goodbye.\n";
             break;
         default:
