@@ -140,7 +140,7 @@ int main()
             
             if (mediaItem) {
                 member->addMedia(*mediaItem); // Borrow the item
-                cout << "Media item '" << title << "' borrowed successfully.\n";
+                cout << "Media item '" << mediaItem->getMediaType() << ": " << title << "' borrowed successfully.\n";
             } else {
                 cout << "Media item '" << title << "' not found.\n";
             }
