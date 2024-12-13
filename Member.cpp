@@ -34,7 +34,7 @@ void Member::setMemberId(int &newMemberId)
     this->memberId = newMemberId;
 }
 
-void Member::addMedia(const Media& mediaItem) {
+ void Member::addMedia(const Media& mediaItem) {
     borrowedMedia.push_back(&mediaItem); // Borrow by storing a pointer
  }
 

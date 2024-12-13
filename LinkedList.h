@@ -41,6 +41,7 @@ public:
     void mergeSort();
     void mergeSort(LinkedList *topListPtr);
     Media* linearSearch(const std::string& title) const;
+
 };
 
 #endif

@@ -127,8 +127,8 @@ int main()
         case 4:
             searchMedia(library, "Movie");
             break;
-        case 5:
-            { // Would need to incorporate this with the different media types....
+        case 5: 
+                { // Would need to incorporate this with the different media types....
             
             string title; 
             cout << "Enter the title of the media item to borrow: ";
@@ -140,14 +140,15 @@ int main()
             
             if (mediaItem) {
                 member->addMedia(*mediaItem); // Borrow the item
-                cout << "Media item '" << mediaItem->getMediaType() << ": " << title << "' borrowed successfully.\n";
+                cout << "Media item '" << mediaItem->getMediaType() << ": "<< title << "' borrowed successfully.\n";
             } else {
                 cout << "Media item '" << title << "' not found.\n";
             }
         }
+        
             break;
         case 6: {
-            // Return media case
+              // Return media case
             string mediaName;
             cout << "Enter the name of the media item to return: ";
             cin.ignore(); // Clear input buffer
