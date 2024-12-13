@@ -1,7 +1,7 @@
 #include "LinkedList.h"
 #include "Movie.h"
 #include "Book.h"
-
+#include "Member.h"
 #include <string>
 #include <iostream>
 using namespace std;
@@ -112,7 +112,7 @@ int main()
     LinkedList books;
     LinkedList movies;
     int choice;
-
+    Member* member = new Member();
     do
     {
         displayMenu();
@@ -132,11 +132,34 @@ int main()
         case 4:
             searchMedia(movies, "Movie");
             break;
-        case 5:
-            cout << "\nBorrowing a media item is under development...\n";
+        case 5: 
+                { // Would need to incorporate this with the different media types....
+            
+            string title; 
+            cout << "Enter the title of the media item to borrow: ";
+            cin.ignore();
+            getline(cin, title);
+            
+            // Search for the item in the LinkedList
+            Media* mediaItem = library.linearSearch(title);
+            
+            if (mediaItem) {
+                member->addMedia(*mediaItem); // Borrow the item
+                cout << "Media item '" << mediaItem->getMediaType() << ": "<< title << "' borrowed successfully.\n";
+            } else {
+                cout << "Media item '" << title << "' not found.\n";
+            }
+        }
+        
             break;
-        case 6:
-            cout << "\nReturning a media item is under development...\n";
+        case 6: {
+              // Return media case
+            string mediaName;
+            cout << "Enter the name of the media item to return: ";
+            cin.ignore(); // Clear input buffer
+            getline(cin, mediaName); // Get full media name
+            member->returnMedia(mediaName);
+        }
             break;
         case 7:
             library.mergeDicts(&books);

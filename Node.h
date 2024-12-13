@@ -14,7 +14,6 @@ private:
 public:
     Node();
     Node(Media *media);
-
     Media *getData() const;
     Node *getNext() const;
     Node *getPrev() const;

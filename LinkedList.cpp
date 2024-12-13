@@ -2,8 +2,7 @@
 #include "Media.h"
 #include <iostream>
 #include <fstream>
-#include "Movie.h"
-#include "Book.h"
+
 using namespace std;
 
 LinkedList::LinkedList()
@@ -139,28 +138,10 @@ void LinkedList::printToScreen() const
     {
         if (current->getData() != nullptr)
         {
-            Media *media = current->getData();
-            cout << "Type: " << media->getMediaType() << endl;
-            cout << "Name: " << media->getName() << endl;
-            cout << "Status: " << media->getStatus() << endl;
-            cout << "Year Released: " << media->getYearReleased() << endl;
-
-            // Print Book specific details
-            if (media->getMediaType() == "Book")
-            {
-                Book *book = dynamic_cast<Book *>(media);
-                cout << "Author: " << book->getAuthor() << endl;
-                cout << "Genre: " << book->getGenre() << endl;
-                cout << "Number of Pages: " << book->getPageNum() << endl;
-            }
-            // Print Movie specific details
-            else if (media->getMediaType() == "Movie")
-            {
-                Movie *movie = dynamic_cast<Movie *>(media);
-                cout << "Director: " << movie->getDirector() << endl;
-                cout << "Genre: " << movie->getGenre() << endl;
-                cout << "Duration: " << movie->getFilmLength() << " minutes" << endl;
-            }
+            cout << "Type: " << (current->getData()->getMediaType()) << endl;
+            cout << "Name: " << (current->getData()->getName()) << endl;
+            cout << "Status: " << (current->getData()->getStatus()) << endl;
+            cout << "Year Released: " << (current->getData()->getYearReleased()) << endl;
             cout << "----------------------------------------" << endl;
         }
         current = current->getNext(); // Move to the next node
@@ -263,6 +244,24 @@ void LinkedList::mergeDicts(LinkedList *listB)
         return;
     }
 }
+
+Media* LinkedList::linearSearch(const string& title) const
+{
+    Node *current = head;
+    
+    // Traverse the list and search for the title
+    while (current != nullptr)
+    {
+        if (current->getData() != nullptr && current->getData()->getName() == title)
+        {
+            return current->getData();  // Return the Media pointer if a match is found
+        }
+        current = current->getNext();
+    }
+
+    return nullptr;  // Return nullptr if not found
+}
+
 
 // Create a temp node to make insertion easier
 //     Node temp;
