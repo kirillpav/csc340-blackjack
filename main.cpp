@@ -107,7 +107,7 @@ int main()
 {
     LinkedList library; // A collection of books and movies
     int choice;
-
+    Member* member = new Member();
     do
     {
         displayMenu();
