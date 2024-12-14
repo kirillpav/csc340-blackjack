@@ -229,10 +229,7 @@ void LinkedList::mergeDicts(LinkedList *listB)
         return;
     }
 
-    Node *currA = head;
-    Node *currB = listB->head;
-
-    // If current dict doesnt exists, set current dict to second dict
+    // If current dict doesn't exist, set current dict to second dict
     if (head == nullptr)
     {
         head = listB->head;
@@ -243,6 +240,61 @@ void LinkedList::mergeDicts(LinkedList *listB)
         listB->tail = nullptr;
         return;
     }
+
+    // Create a temp node to make insertion easier
+    Node temp;
+    Node *merged = &temp;
+    merged->setNext(nullptr);
+
+    Node *currA = head;
+    Node *currB = listB->head;
+
+    while (currA != nullptr && currB != nullptr)
+    {
+        Node *nextB = currB->getNext();
+
+        if (currA->getData()->getName() < currB->getData()->getName())
+        {
+            merged->setNext(currA);
+            currA->setPrev(merged);
+            currA = currA->getNext();
+        }
+        else
+        {
+            merged->setNext(currB);
+            currB->setPrev(merged);
+            currB->setNext(currA);
+            if (currA != nullptr)
+            {
+                currA->setPrev(currB);
+            }
+            listB->listSize--;
+            listSize++;
+            currB = nextB;
+        }
+        merged = merged->getNext();
+    }
+
+    // If there are remaining elements in listB
+    if (currB != nullptr)
+    {
+        merged->setNext(currB);
+        currB->setPrev(merged);
+        tail = listB->tail;
+        listSize += listB->listSize;
+    }
+
+    // Update the head and its prev pointer
+    head = temp.getNext();
+    if (head != nullptr)
+    {
+        head->setPrev(nullptr);
+    }
+
+    // Clear listB
+    listB->head = nullptr;
+    listB->tail = nullptr;
+    listB->listSize = 0;
 }
 
 Media *LinkedList::linearSearch(const string &title) const
