@@ -17,7 +17,7 @@ void displayMenu()
     cout << "4. Search for a Movie\n";
     cout << "5. Borrow a Media Item\n";
     cout << "6. Return a Media Item\n";
-    cout << "7. Merge Dictionaries\n";
+    cout << "7. Merge Libraries\n";
     cout << "8. Sort Media\n";
     cout << "9. List All Media\n";
     cout << "10. Exit\n";
@@ -25,10 +25,10 @@ void displayMenu()
     cout << "Please choose an option (1-10): ";
 }
 
-void addBook(LinkedList &library)
+void addBook(LinkedList &library, LinkedList &secondLibrary)
 {
     string name, status, author, genre;
-    int yearReleased, pageNum;
+    int yearReleased, pageNum, libraryChoice;
 
     cout << "\nEnter the book's title: ";
     cin.ignore();
@@ -43,15 +43,23 @@ void addBook(LinkedList &library)
     cin >> yearReleased;
     cout << "Enter the number of pages: ";
     cin >> pageNum;
-
-    library.push_back(new Book(name, status, yearReleased, author, genre, pageNum));
+    cout << "Enter the library to add the book to (1 or 2): ";
+    cin >> libraryChoice;
+    if (libraryChoice == 1)
+    {
+        library.push_back(new Book(name, status, yearReleased, author, genre, pageNum));
+    }
+    else
+    {
+        secondLibrary.push_back(new Book(name, status, yearReleased, author, genre, pageNum));
+    }
     cout << "Book \"" << name << "\" added successfully!\n";
 }
 
-void addMovie(LinkedList &library)
+void addMovie(LinkedList &library, LinkedList &secondLibrary)
 {
     string name, status, director, genre;
-    int yearReleased;
+    int yearReleased, libraryChoice;
     double duration;
 
     cout << "\nEnter the movie's title: ";
@@ -67,8 +75,16 @@ void addMovie(LinkedList &library)
     cin >> yearReleased;
     cout << "Enter the duration (in minutes): ";
     cin >> duration;
-
-    library.push_back(new Movie(name, status, yearReleased, director, genre, duration));
+    cout << "Enter the library to add the movie to (1 or 2): ";
+    cin >> libraryChoice;
+    if (libraryChoice == 1)
+    {
+        library.push_back(new Movie(name, status, yearReleased, director, genre, duration));
+    }
+    else
+    {
+        secondLibrary.push_back(new Movie(name, status, yearReleased, director, genre, duration));
+    }
     cout << "Movie \"" << name << "\" added successfully!\n";
 }
 
@@ -108,8 +124,9 @@ void listMedia(const LinkedList &library)
 int main()
 {
     LinkedList library; // A collection of books and movies
+    LinkedList secondLibrary;
 
-    int choice;
+    int choice, libraryChoice;
     Member *member = new Member();
     do
     {
@@ -119,10 +136,10 @@ int main()
         switch (choice)
         {
         case 1:
-            addBook(library);
+            addBook(library, secondLibrary);
             break;
         case 2:
-            addMovie(library);
+            addMovie(library, secondLibrary);
             break;
         case 3:
             searchMedia(library, "Book");
@@ -131,8 +148,7 @@ int main()
             searchMedia(library, "Movie");
             break;
         case 5:
-        { // Would need to incorporate this with the different media types....
-
+        {
             string title;
             cout << "Enter the title of the media item to borrow: ";
             cin.ignore();
@@ -164,13 +180,35 @@ int main()
         }
         break;
         case 7:
-            library.mergeDicts(&library);
+            library.mergeDicts(&secondLibrary);
             break;
         case 8:
-            library.mergeSort();
+            cout << "Enter the library to sort (1 or 2): ";
+            cin >> libraryChoice;
+            if (libraryChoice == 1)
+            {
+                cout << "sorting..." << endl;
+                library.mergeSort();
+                cout << "           ...Done!" << endl;
+            }
+            else
+            {
+                cout << "sorting..." << endl;
+                secondLibrary.mergeSort();
+                cout << "           ...Done!" << endl;
+            }
             break;
         case 9:
-            listMedia(library);
+            cout << "Enter the library to list (1 or 2): ";
+            cin >> libraryChoice;
+            if (libraryChoice == 1)
+            {
+                listMedia(library);
+            }
+            else
+            {
+                listMedia(secondLibrary);
+            }
             break;
         case 10:
             cout << "\nThank you for using the library system! Goodbye.\n";
