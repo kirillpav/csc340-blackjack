@@ -18,12 +18,10 @@ void displayMenu()
     cout << "5. Borrow a Media Item\n";
     cout << "6. Return a Media Item\n";
     cout << "7. Merge Dictionaries\n";
-    cout << "8. List All Books\n";
-    cout << "9. List All Movies\n";
-    cout << "10. List All Media\n";
-    cout << "11. Exit\n";
+    cout << "8. List All Media\n";
+    cout << "9. Exit\n";
     cout << "=========================================";
-    cout << "Please choose an option (1-11): ";
+    cout << "Please choose an option (1-8): ";
 }
 
 void addBook(LinkedList &library)
@@ -109,10 +107,9 @@ void listMedia(const LinkedList &library)
 int main()
 {
     LinkedList library; // A collection of books and movies
-    LinkedList books;
-    LinkedList movies;
+
     int choice;
-    Member* member = new Member();
+    Member *member = new Member();
     do
     {
         displayMenu();
@@ -121,54 +118,56 @@ int main()
         switch (choice)
         {
         case 1:
-            addBook(books);
+            addBook(library);
             break;
         case 2:
-            addMovie(movies);
+            addMovie(library);
             break;
         case 3:
-            searchMedia(books, "Book");
+            searchMedia(library, "Book");
             break;
-        case 4:
-            searchMedia(movies, "Movie");
-            break;
-        case 5: 
-                { // Would need to incorporate this with the different media types....
-            
-            string title; 
+
+        case 5:
+        { // Would need to incorporate this with the different media types....
+
+            string title;
             cout << "Enter the title of the media item to borrow: ";
             cin.ignore();
             getline(cin, title);
-            
+
             // Search for the item in the LinkedList
-            Media* mediaItem = library.linearSearch(title);
-            
-            if (mediaItem) {
+            Media *mediaItem = library.linearSearch(title);
+
+            if (mediaItem)
+            {
                 member->addMedia(*mediaItem); // Borrow the item
-                cout << "Media item '" << mediaItem->getMediaType() << ": "<< title << "' borrowed successfully.\n";
-            } else {
+                cout << "Media item '" << mediaItem->getMediaType() << ": " << title << "' borrowed successfully.\n";
+            }
+            else
+            {
                 cout << "Media item '" << title << "' not found.\n";
             }
         }
-        
-            break;
-        case 6: {
-              // Return media case
+
+        break;
+        case 6:
+        {
+            // Return media case
             string mediaName;
             cout << "Enter the name of the media item to return: ";
-            cin.ignore(); // Clear input buffer
+            cin.ignore();            // Clear input buffer
             getline(cin, mediaName); // Get full media name
             member->returnMedia(mediaName);
         }
-            break;
+        break;
         case 7:
-            library.mergeDicts(&books);
+            library.mergeDicts(&library);
             break;
         case 8:
-            listMedia(books);
+            listMedia(library);
             break;
         case 9:
-            listMedia(movies);
+            listMedia(library);
             break;
         case 10:
             listMedia(library);
