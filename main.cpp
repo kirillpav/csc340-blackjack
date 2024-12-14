@@ -18,10 +18,11 @@ void displayMenu()
     cout << "5. Borrow a Media Item\n";
     cout << "6. Return a Media Item\n";
     cout << "7. Merge Dictionaries\n";
-    cout << "8. List All Media\n";
-    cout << "9. Exit\n";
+    cout << "8. Sort Media\n";
+    cout << "9. List All Media\n";
+    cout << "10. Exit\n";
     cout << "=========================================";
-    cout << "Please choose an option (1-8): ";
+    cout << "Please choose an option (1-10): ";
 }
 
 void addBook(LinkedList &library)
@@ -126,7 +127,9 @@ int main()
         case 3:
             searchMedia(library, "Book");
             break;
-
+        case 4:
+            searchMedia(library, "Movie");
+            break;
         case 5:
         { // Would need to incorporate this with the different media types....
 
@@ -164,15 +167,12 @@ int main()
             library.mergeDicts(&library);
             break;
         case 8:
-            listMedia(library);
+            library.mergeSort();
             break;
         case 9:
             listMedia(library);
             break;
         case 10:
-            listMedia(library);
-            break;
-        case 11:
             cout << "\nThank you for using the library system! Goodbye.\n";
             break;
         default:

@@ -245,23 +245,22 @@ void LinkedList::mergeDicts(LinkedList *listB)
     }
 }
 
-Media* LinkedList::linearSearch(const string& title) const
+Media *LinkedList::linearSearch(const string &title) const
 {
     Node *current = head;
-    
+
     // Traverse the list and search for the title
     while (current != nullptr)
     {
         if (current->getData() != nullptr && current->getData()->getName() == title)
         {
-            return current->getData();  // Return the Media pointer if a match is found
+            return current->getData(); // Return the Media pointer if a match is found
         }
         current = current->getNext();
     }
 
-    return nullptr;  // Return nullptr if not found
+    return nullptr; // Return nullptr if not found
 }
-
 
 // Create a temp node to make insertion easier
 //     Node temp;
@@ -323,103 +322,103 @@ Media* LinkedList::linearSearch(const string& title) const
 //     listB->listSize = 0;
 // }
 
-// void LinkedList::mergeSort()
-// {
-//     // Base case
-//     if (head == nullptr || head->getNext() == nullptr)
-//     {
-//         return;
-//     }
+void LinkedList::mergeSort()
+{
+    // Base case
+    if (head == nullptr || head->getNext() == nullptr)
+    {
+        return;
+    }
 
-//     LinkedList *secondHalf = new LinkedList();
+    LinkedList *secondHalf = new LinkedList();
 
-//     int midPoint = listSize / 2;
-//     Node *current = head;
+    int midPoint = listSize / 2;
+    Node *current = head;
 
-//     for (int i = 0; i < midPoint - 1; i++)
-//     {
-//         current = current->getNext();
-//     }
+    for (int i = 0; i < midPoint - 1; i++)
+    {
+        current = current->getNext();
+    }
 
-//     secondHalf->setHead(current->getNext());
-//     if (secondHalf->getHead() != nullptr)
-//     {
-//         secondHalf->getHead()->setPrev(nullptr);
-//     }
-//     current->setNext(nullptr);
+    secondHalf->setHead(current->getNext());
+    if (secondHalf->getHead() != nullptr)
+    {
+        secondHalf->getHead()->setPrev(nullptr);
+    }
+    current->setNext(nullptr);
 
-//     secondHalf->setSize(listSize - midPoint);
-//     setSize(midPoint);
+    secondHalf->setSize(listSize - midPoint);
+    setSize(midPoint);
 
-//     current = head;
-//     while (current->getNext() != nullptr)
-//     {
-//         current = current->getNext();
-//     }
-//     tail = current;
+    current = head;
+    while (current->getNext() != nullptr)
+    {
+        current = current->getNext();
+    }
+    tail = current;
 
-//     current = secondHalf->getHead();
-//     while (current->getNext() != nullptr)
-//     {
-//         current = current->getNext();
-//     }
-//     secondHalf->setTail(current);
+    current = secondHalf->getHead();
+    while (current->getNext() != nullptr)
+    {
+        current = current->getNext();
+    }
+    secondHalf->setTail(current);
 
-//     this->mergeSort(this);
-//     this->mergeSort(secondHalf);
+    this->mergeSort(this);
+    this->mergeSort(secondHalf);
 
-//     this->mergeDicts(secondHalf);
+    this->mergeDicts(secondHalf);
 
-//     delete secondHalf;
-// }
+    delete secondHalf;
+}
 
-// void LinkedList::mergeSort(LinkedList *topListPtr)
-// {
-//     // Base case
-//     if (topListPtr == nullptr || topListPtr->getHead() == nullptr ||
-//         topListPtr->getHead()->getNext() == nullptr)
-//     {
-//         return;
-//     }
+void LinkedList::mergeSort(LinkedList *topListPtr)
+{
+    // Base case
+    if (topListPtr == nullptr || topListPtr->getHead() == nullptr ||
+        topListPtr->getHead()->getNext() == nullptr)
+    {
+        return;
+    }
 
-//     LinkedList *secondHalf = new LinkedList();
+    LinkedList *secondHalf = new LinkedList();
 
-//     int midPoint = topListPtr->size() / 2;
-//     Node *current = topListPtr->getHead();
+    int midPoint = topListPtr->size() / 2;
+    Node *current = topListPtr->getHead();
 
-//     for (int i = 0; i < midPoint - 1; i++)
-//     {
-//         current = current->getNext();
-//     }
+    for (int i = 0; i < midPoint - 1; i++)
+    {
+        current = current->getNext();
+    }
 
-//     secondHalf->setHead(current->getNext());
-//     if (secondHalf->getHead() != nullptr)
-//     {
-//         secondHalf->getHead()->setPrev(nullptr);
-//     }
-//     current->setNext(nullptr);
+    secondHalf->setHead(current->getNext());
+    if (secondHalf->getHead() != nullptr)
+    {
+        secondHalf->getHead()->setPrev(nullptr);
+    }
+    current->setNext(nullptr);
 
-//     secondHalf->setSize(topListPtr->size() - midPoint);
-//     topListPtr->setSize(midPoint);
+    secondHalf->setSize(topListPtr->size() - midPoint);
+    topListPtr->setSize(midPoint);
 
-//     current = topListPtr->getHead();
-//     while (current->getNext() != nullptr)
-//     {
-//         current = current->getNext();
-//     }
-//     topListPtr->setTail(current);
+    current = topListPtr->getHead();
+    while (current->getNext() != nullptr)
+    {
+        current = current->getNext();
+    }
+    topListPtr->setTail(current);
 
-//     current = secondHalf->getHead();
-//     while (current->getNext() != nullptr)
-//     {
-//         current = current->getNext();
-//     }
-//     secondHalf->setTail(current);
+    current = secondHalf->getHead();
+    while (current->getNext() != nullptr)
+    {
+        current = current->getNext();
+    }
+    secondHalf->setTail(current);
 
-//     mergeSort(topListPtr);
-//     mergeSort(secondHalf);
+    mergeSort(topListPtr);
+    mergeSort(secondHalf);
 
-//     topListPtr->mergeDicts(secondHalf);
+    topListPtr->mergeDicts(secondHalf);
 
-//     delete secondHalf;
-// }
+    delete secondHalf;
+}
